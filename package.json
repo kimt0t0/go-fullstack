@@ -1,0 +1,21 @@
+{
+  "name": "go-fullstack",
+  "version": "1.0.0",
+  "description": "Projet d'initiation à Node, Express et MongoDB via OpenClassrooms.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Kim",
+    "Robert",
+    "Node",
+    "Express",
+    "Mongo",
+    "backend",
+    "développement",
+    "web"
+  ],
+  "author": "Kim Robert",
+  "license": "ISC"
+}
