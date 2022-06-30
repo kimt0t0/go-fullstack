@@ -17,5 +17,8 @@
     "web"
   ],
   "author": "Kim Robert",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.18"
+  }
 }
