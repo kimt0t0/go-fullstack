@@ -2,7 +2,22 @@
 
 var express = require('express');
 
+var mongoose = require('mongoose');
+
 var app = express();
+app.use(express.json()); //intercepte toutes les requêtes dont le content-type est json et les met à dispo sur l'objet requête dans req.body
+//(autre façon de faire plus ancienne: utiliser le package bodyparser)
+
+mongoose.connect("mongodb+srv://kimt0t0:<adaJNM39-&>@kimrobcluster.8tem1u2.mongodb.net/?retryWrites=true&w=majority", //connexion à la base de donnée mongoDB
+//penser à intégrer le mot de passe utilisateur MongoDB après le nom utilisateur ici.mongoose.connect('mongodb+srv://jimbob:<PASSWORD>@cluster0-pme76.mongodb.net/test?retryWrites=true&w=majority',
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(function () {
+  return console.log('Connexion à MongoDB réussie !');
+})["catch"](function () {
+  return console.log('Connexion à MongoDB échouée !');
+});
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*'); //permet d'accéder à l'API depuis n'importe-quelle origine
 
@@ -12,7 +27,14 @@ app.use(function (req, res, next) {
 
   next();
 });
-app.use('/api/stuff', function (req, res, next) {
+app.post('/api/stuff', function (req, res, next) {
+  console.log(req.body);
+  res.status(201).json({
+    //201 = code pour création de ressource, nécessaire de renvoyer ce statut sinon ça plante côté utilisateur
+    message: 'Objet créé !'
+  });
+});
+app.get('/api/stuff', function (req, res, next) {
   var stuff = [{
     _id: 'oeihfzeoi',
     title: 'Mon premier objet',
